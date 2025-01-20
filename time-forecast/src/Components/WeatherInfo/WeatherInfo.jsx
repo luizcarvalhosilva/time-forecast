@@ -9,7 +9,7 @@ function WeatherInfo({ weatherData }) {
 
             {weatherData.weather?.[0]?.icon && (
                 <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
-                    alt="ícone do clima" />
+                    alt={`ícone do clima:${weatherData.weather?.[0]?.description ?? "desconhecido"}`} />
             )}
 
             {weatherData.main?.temp != null ?
