@@ -2,6 +2,12 @@ function WeatherInfo({ weatherData }) {
 
     console.log(weatherData);
 
+    const returnGeneralState = (weatherData.main != null);
+    let generalWeather;
+
+    if(returnGeneralState) {
+        generalWeather = (
+            <>
                 <p>Temperatura: {Math.round(weatherData.main.temp)}°C</p>
                 <p>Umidade: {weatherData.main.humidity}%</p>
                 <p>Sensação térmica: {weatherData.main.feels_like}°C</p>
@@ -9,6 +15,10 @@ function WeatherInfo({ weatherData }) {
                 <p>Temperatura máx.: {weatherData.main.temp_max}°C</p>
                 <p>Temperatura min.: {weatherData.main.temp_min}°C</p>
                 <p>O clima está: {weatherData.weather[0].description}</p>
+            </>
+        ); 
+    }
+
     return (
         <div>
             <h2>Informações para:</h2>
@@ -19,9 +29,6 @@ function WeatherInfo({ weatherData }) {
                     alt={`ícone do clima:${weatherData.weather?.[0]?.description ?? "desconhecido"}`} />
             )}
 
-            {weatherData.main?.temp != null ?
-                (<p>{Math.round(weatherData.main.temp)}</p>) : (<p>Temperatura indisponível</p>)
-            }
             <div>{generalWeather}</div>
         </div>
     );
