@@ -18,13 +18,12 @@ function App() {
   }
 
   return (
-    <>
-      <h1>teste</h1>
+    <div className='general-container'>
+      <h1>Previsão do Tempo</h1>
       <input ref={cityInputRef} type="text" placeholder='digite a cidade'/>
       <button onClick={citySearch}>Buscar</button>
-
       <WeatherInfo weatherData={weather}/>
-    </>
+    </div>
   )
 }
 
