@@ -13,7 +13,7 @@ function WeatherInfo({ weatherData }) {
             )}
 
             {weatherData.main?.temp != null ?
-                (<p>{Math.round(weatherData.main.temp)}</p>) : ("Temperatura indisponível")
+                (<p>{Math.round(weatherData.main.temp)}</p>) : (<p>Temperatura indisponível</p>)
             }
         </div>
     );
