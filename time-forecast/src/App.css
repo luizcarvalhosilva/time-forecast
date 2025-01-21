@@ -4,6 +4,7 @@
     margin: 0 auto;
 
     h1 {
+        text-align: center;
         color: white;
         font-size: 3rem;
         margin-bottom: 22px;
@@ -16,14 +17,25 @@
         width: 60%;
         max-width: 300px;
         font-size: 1.2rem;
+        outline: none;
+        font-weight: bold;
     }
+}
 
-    button {
-        padding: 10px;
-        background-color: var(--color-5);
-        font-size: 1.2rem;
-        border: 0;
-        border-radius: 0px 15px 15px 0;
-        cursor: pointer;
-    }
+.cityInput {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--color-5);
+    font-size: 1.2rem;
+    border: 0;
+    border-radius: 0px 15px 15px 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2b7a1f;
 }
