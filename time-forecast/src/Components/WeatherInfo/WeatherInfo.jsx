@@ -1,3 +1,5 @@
+import "./WeatherInfo.css";
+
 function WeatherInfo({ weatherData }) {
 
     console.log(weatherData);
@@ -5,7 +7,7 @@ function WeatherInfo({ weatherData }) {
     const returnGeneralState = (weatherData.main != null);
     let generalWeather;
 
-    if(returnGeneralState) {
+    if (returnGeneralState) {
         generalWeather = (
             <>
                 <p>Temperatura: {Math.round(weatherData.main.temp)}°C</p>
@@ -16,13 +18,21 @@ function WeatherInfo({ weatherData }) {
                 <p>Temperatura min.: {weatherData.main.temp_min}°C</p>
                 <p>O clima está: {weatherData.weather[0].description}</p>
             </>
-        ); 
+        );
     }
 
     return (
-        <div>
-            <h2>Informações para:</h2>
-            <h2>Cidade: {weatherData.name ?? "desconhecida ou não informada"}</h2>
+        <div className="weatherContainer">
+            <div className="header">
+                <h2>Cidade: {weatherData.name ?? "desconhecida ou não informada"}</h2>
+                {weatherData?.sys?.country && (
+                    <img
+                        src={`https://flagcdn.com/w320/${weatherData.sys.country.toLowerCase()}.png`}
+                        alt={`Bandeira do(a) ${weatherData.sys.country}`}
+                        className="countryFlag"
+                    />
+                )}
+            </div>
 
             {weatherData.weather?.[0]?.icon && (
                 <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
