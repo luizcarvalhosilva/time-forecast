@@ -20,9 +20,13 @@ function App() {
   return (
     <div className='general-container'>
       <h1>Previsão do Tempo</h1>
-      <input ref={cityInputRef} type="text" placeholder='digite a cidade'/>
-      <button onClick={citySearch}>Buscar</button>
-      {weather && <WeatherInfo weatherData={weather}/>}
+
+      <div className='cityInput'>
+        <input ref={cityInputRef} type="text" placeholder='digite a cidade'/>
+        <button onClick={citySearch}>Buscar</button>
+      </div>
+
+      <div>{weather && <WeatherInfo weatherData={weather}/>}</div>
     </div>
   )
 }
