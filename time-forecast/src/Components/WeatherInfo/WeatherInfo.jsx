@@ -10,13 +10,8 @@ function WeatherInfo({ weatherData }) {
     if (returnGeneralState) {
         generalWeather = (
             <>
-                <p>Temperatura: {Math.round(weatherData.main.temp)}°C</p>
-                <p>Umidade: {weatherData.main.humidity}%</p>
-                <p>Sensação térmica: {weatherData.main.feels_like}°C</p>
-                <p>Pressão: {weatherData.main.pressure}</p>
                 <p>Temperatura máx.: {weatherData.main.temp_max}°C</p>
                 <p>Temperatura min.: {weatherData.main.temp_min}°C</p>
-                <p>O clima está: {weatherData.weather[0].description}</p>
             </>
         );
     }
@@ -24,7 +19,11 @@ function WeatherInfo({ weatherData }) {
     return (
         <div className="weatherContainer">
             <div className="header">
-                <h2>Cidade: {weatherData.name ?? "desconhecida ou não informada"}</h2>
+                <div className="cityNameContainer">
+                    <span className="cityLabel">Cidade:</span>
+                    <h2 className="cityName">{weatherData.name ?? "desconhecida ou não informada"}</h2>
+                </div>
+
                 {weatherData?.sys?.country && (
                     <img
                         src={`https://flagcdn.com/w80/${weatherData.sys.country.toLowerCase()}.png`}
@@ -33,13 +32,19 @@ function WeatherInfo({ weatherData }) {
                     />
                 )}
             </div>
-
-            {weatherData.weather?.[0]?.icon && (
-                <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
-                    alt={`ícone do clima:${weatherData.weather?.[0]?.description ?? "desconhecido"}`} />
-            )}
-
-            <div>{generalWeather}</div>
+            <hr />
+            <div className="weatherHead">
+                <div className="description">
+                    {weatherData.weather?.[0]?.icon && (
+                        <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+                            alt={`ícone do clima:${weatherData.weather?.[0]?.description ?? "desconhecido"}`} />
+                    )}
+                    <p>{weatherData.weather[0].description}</p>
+                </div>
+                <p className="weatherTemp">{Math.round(weatherData.main.temp)}°C</p>
+            </div>
+            <hr />
+            <div className="weatherDetails">{generalWeather}</div>
         </div>
     );
 }
