@@ -2,15 +2,34 @@
     background-color: #f1ececd0;
     border-radius: 0 20px;
     margin-top: 20px;
-    padding: 5px;
+    padding: 8px;
 }
 
 .header {
     margin-top: 15px;
+    margin-bottom: 25px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 25px;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cityNameContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.cityLabel {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cityName {
+    font-size: 1.22rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .countryFlag {
@@ -18,4 +37,37 @@
     height: 40px;
     border-radius: 7px;
     box-shadow: 2px 2px 1px 1px var(--color-2);
+}
+
+.weatherHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.3rem;
+        text-transform: capitalize;
+    }
+
+    .weatherTemp {
+        
+        font-size: 3rem;
+        text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.weatherDetails {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 12px;
 }

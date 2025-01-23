@@ -10,6 +10,9 @@ function WeatherInfo({ weatherData }) {
     if (returnGeneralState) {
         generalWeather = (
             <>
+                <p>&#x1F4A7; Umidade: {weatherData.main.humidity}%</p>
+                <p>&#x1F321;&#xFE0F; Sensação térmica: {weatherData.main.feels_like}°C</p>
+                <p>&#x2B07;&#xFE0F; Pressão: {weatherData.main.pressure}</p>
                 <p>Temperatura máx.: {weatherData.main.temp_max}°C</p>
                 <p>Temperatura min.: {weatherData.main.temp_min}°C</p>
             </>
