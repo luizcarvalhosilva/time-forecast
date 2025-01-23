@@ -14,10 +14,8 @@
 }
 
 .countryFlag {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ccc;
+    width: 55px;
+    height: 40px;
+    border-radius: 7px;
     box-shadow: 2px 2px 1px 1px var(--color-2);
 }

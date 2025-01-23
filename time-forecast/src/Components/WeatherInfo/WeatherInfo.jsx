@@ -27,7 +27,7 @@ function WeatherInfo({ weatherData }) {
                 <h2>Cidade: {weatherData.name ?? "desconhecida ou não informada"}</h2>
                 {weatherData?.sys?.country && (
                     <img
-                        src={`https://flagcdn.com/w320/${weatherData.sys.country.toLowerCase()}.png`}
+                        src={`https://flagcdn.com/w80/${weatherData.sys.country.toLowerCase()}.png`}
                         alt={`Bandeira do(a) ${weatherData.sys.country}`}
                         className="countryFlag"
                     />
