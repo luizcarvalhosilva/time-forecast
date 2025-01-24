@@ -2,9 +2,11 @@ import { useState, useRef } from 'react'
 import axios from 'axios'
 import './App.css'
 import WeatherInfo from './Components/WeatherInfo/WeatherInfo';
+import WeatherInfo5Days from './Components/WeatherInfo5Days/WeatherInfo5Days';
 
 function App() {
   const [weather, setWeather] = useState();
+  const [weather5D, setWeather5D] = useState();
 
   const cityInputRef = useRef();
 
@@ -13,10 +15,13 @@ function App() {
     const apiKey = "ed3e7e048374f3bb1da9bc490dbf8e7e";
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
-    const gatheredData = await axios.get(url)
+    const url5Days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
 
+    const gatheredData = await axios.get(url);
+    const gatheredData5Days = await axios.get(url5Days);
 
     setWeather(gatheredData.data)
+    setWeather5D(gatheredData5Days.data);
   }
 
   return (
@@ -28,7 +33,8 @@ function App() {
         <button onClick={citySearch}>Buscar</button>
       </div>
 
-     {weather && <WeatherInfo weatherData={weather} />}
+      {weather && <WeatherInfo weatherData={weather} />}
+      {weather5D && <WeatherInfo5Days setWeather5D={weather5D} />}
     </div>
   )
 }
