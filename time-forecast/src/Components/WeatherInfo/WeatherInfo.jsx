@@ -35,7 +35,9 @@ function WeatherInfo({ weatherData }) {
                     />
                 )}
             </div>
+
             <hr />
+
             <div className="weatherHead">
                 <div className="description">
                     {weatherData.weather?.[0]?.icon && (
