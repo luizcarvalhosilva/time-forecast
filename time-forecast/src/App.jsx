@@ -26,7 +26,6 @@ function App() {
         <button onClick={citySearch}>Buscar</button>
       </div>
 
-      <div>{weather && <WeatherInfo weatherData={weather}/>}</div>
     </div>
   )
 }
