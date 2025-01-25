@@ -34,7 +34,7 @@ function App() {
       </div>
 
       {weather && <WeatherInfo weatherData={weather} />}
-      {weather5D && <WeatherInfo5Days setWeather5D={weather5D} />}
+      {weather5D && <WeatherInfo5Days weather5D={weather5D} />}
     </div>
   )
 }
