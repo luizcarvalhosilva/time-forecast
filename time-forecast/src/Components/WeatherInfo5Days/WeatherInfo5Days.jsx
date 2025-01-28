@@ -13,14 +13,29 @@ function WeatherInfo5Days({ weather5D }) {
     }
 
     const weatherAt9am = Object.values(dailyForecast).slice(0, 5);
+    // console.log(weather5D);
 
-    function calcularTemperaturasDiarias() {
+    function getIsoDate() {
         const currentDate = new Intl.DateTimeFormat("pt-BR", {
             year: "numeric", month: "2-digit", day: "2-digit"
         }).format(new Date());
 
         const [day, month, year] = currentDate.split("/");
-        const todayFormatted = `${year}-${month}-${day}`;
+        return `${year}-${month}-${day}`;
+    }
+
+    function convertDate(dateTxt) {
+        if (!dateTxt) return "Data inválida";
+
+        const date = new Date(dateTxt + "T00:00:00");
+        return date.toLocaleDateString("pt-BR", {
+            weekday: 'long', day: '2-digit', month: '2-digit'
+        });
+    }
+
+    function calcularTemperaturasDiarias() {
+
+        const todayFormatted = getIsoDate();
 
         const tempPerDay = {};
 
@@ -44,15 +59,6 @@ function WeatherInfo5Days({ weather5D }) {
         }));
     }
 
-    function convertDate(dateTxt) {
-        if (!dateTxt) return "Data inválida";
-
-        const date = new Date(dateTxt + "T00:00:00");
-        return date.toLocaleDateString("pt-BR", {
-            weekday: 'long', day: '2-digit', month: '2-digit'
-        });
-    }
-
     const tempPerDay = calcularTemperaturasDiarias();
 
     return (
@@ -61,21 +67,22 @@ function WeatherInfo5Days({ weather5D }) {
 
             {weatherAt9am.map((forecast, index) => {
                 const { date, temp_min, temp_max } = tempPerDay[index] || {};
-                <p>{convertDate(date)}</p>
+                
                 return (
-                    <div key={forecast.dt} className="forecastCard">
-                        <p>{convertDate(date)}</p>
-                        <img
-                            src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                            alt={`Ícone do clima: ${forecast.weather?.[0]?.description ?? "desconhecido"}`}
-                        />
-                        <p>{forecast.weather[0].description}</p>
-                        {date && (
-                            <>
-                                <p>🌡 Temp. Mínima: {temp_min?.toFixed(1)} °C</p>
-                                <p>🔥 Temp. Máxima: {temp_max?.toFixed(1)} °C</p>
-                            </>
-                        )}
+                    <div key={forecast.dt} className="forecastContent">
+                        <div className="forecastCard">
+                            <p className="date">{convertDate(date)}</p>
+                            <img
+                                src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                                alt={`Ícone do clima: ${forecast.weather?.[0]?.description ?? "desconhecido"}`}
+                            />
+                            <p className="description">{forecast.weather[0].description}</p>
+                            {date && (
+                                <>
+                                    <span className="temps">{temp_max?.toFixed(1)}°C máx / {temp_min?.toFixed(1)}°C min</span>
+                                </>
+                            )}
+                        </div>
                     </div>
                 );
             })}
