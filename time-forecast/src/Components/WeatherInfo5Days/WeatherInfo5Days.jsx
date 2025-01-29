@@ -1,3 +1,8 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/bundle"; // Garante que todos os estilos sejam aplicados corretamente
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import './WeatherInfo5Days.css';
 
 function WeatherInfo5Days({ weather5D }) {
@@ -13,7 +18,6 @@ function WeatherInfo5Days({ weather5D }) {
     }
 
     const weatherAt9am = Object.values(dailyForecast).slice(0, 5);
-    // console.log(weather5D);
 
     function getIsoDate() {
         const currentDate = new Intl.DateTimeFormat("pt-BR", {
@@ -34,9 +38,7 @@ function WeatherInfo5Days({ weather5D }) {
     }
 
     function calcularTemperaturasDiarias() {
-
         const todayFormatted = getIsoDate();
-
         const tempPerDay = {};
 
         weather5D.list.forEach(record => {
@@ -65,27 +67,41 @@ function WeatherInfo5Days({ weather5D }) {
         <div className="generalContainer">
             <h2>Previsão do Tempo</h2>
 
-            {weatherAt9am.map((forecast, index) => {
-                const { date, temp_min, temp_max } = tempPerDay[index] || {};
-                
-                return (
-                    <div key={forecast.dt} className="forecastContent">
-                        <div className="forecastCard">
-                            <p className="date">{convertDate(date)}</p>
-                            <img
-                                src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                                alt={`Ícone do clima: ${forecast.weather?.[0]?.description ?? "desconhecido"}`}
-                            />
-                            <p className="description">{forecast.weather[0].description}</p>
-                            {date && (
-                                <>
-                                    <span className="temps">{temp_max?.toFixed(1)}°C máx / {temp_min?.toFixed(1)}°C min</span>
-                                </>
-                            )}
-                        </div>
-                    </div>
-                );
-            })}
+            <div className="carouselContainer">
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    breakpoints={{
+                        480: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                        1024: { slidesPerView: 4 }
+                    }}
+                    navigation={{ clickable: true }}
+                    modules={[Navigation]}
+                >
+                    {weatherAt9am.map((forecast, index) => {
+                        const { date, temp_min, temp_max } = tempPerDay[index] || {};
+
+                        return (
+                            <SwiperSlide key={forecast.dt}>
+                                <div className="forecastCard">
+                                    <p className="date">{convertDate(date)}</p>
+                                    <img
+                                        src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                                        alt={`Ícone do clima: ${forecast.weather?.[0]?.description ?? "desconhecido"}`}
+                                    />
+                                    <p className="description">{forecast.weather[0].description}</p>
+                                    {date && (
+                                        <span className="temps">
+                                            {temp_max?.toFixed(1)}°C máx / {temp_min?.toFixed(1)}°C min
+                                        </span>
+                                    )}
+                                </div>
+                            </SwiperSlide>
+                        );
+                    })}
+                </Swiper>
+            </div>
         </div>
     );
 }

@@ -42,3 +42,17 @@
         margin-bottom: 8px;
     }
 }
+
+.carouselContainer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.swiper {
+    width: 100%;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    scale: 0.8;
+}
