@@ -1,3 +1,4 @@
+import Clock from '../Clock/Clock.jsx'
 import "./WeatherInfo.css";
 
 function WeatherInfo({ weatherData }) {
@@ -48,6 +49,7 @@ function WeatherInfo({ weatherData }) {
             </div>
             <hr />
             <div className="weatherDetails">{generalWeather}</div>
+                    <Clock timezone={weatherData.timezone} />
         </div>
     );
 }
