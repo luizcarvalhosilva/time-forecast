@@ -71,3 +71,14 @@
     text-align: left;
     gap: 12px;
 }
+
+.timeInfoContainer {
+    margin-top: 50px;
+    margin-left: 5px;
+    
+}
+
+.icon {
+    vertical-align: middle;
+    margin-right: 3px;
+}
