@@ -69,11 +69,14 @@ function WeatherInfo({ weatherData }) {
 
             <div className="timeInfoContainer">
                 <div className="localTime">
-                    <Clock timezone={weatherData.timezone} />
+                    <h3>&#128345; Hora Local</h3>
+                    <div className="clock-container">
+                        <Clock timezone={weatherData.timezone} />
+                    </div>
                 </div>
-                
+
                 <div className="sunInfo">
-                    <h3>&#x2600;&#xFE0F; Sun</h3>
+                    <h3>&#x2600;&#xFE0F; Sol</h3>
                     <p>
                         <svg
                             className="icon"
@@ -90,7 +93,7 @@ function WeatherInfo({ weatherData }) {
                             <circle cx="12" cy="12" r="5" />
                             <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
                         </svg>
-                        Nascer do Sol: {sunrise}
+                        Nascer: {sunrise}
                     </p>
                     {/* hora atual nascer-e-por COORD ? */}
                     <p>
@@ -116,7 +119,7 @@ function WeatherInfo({ weatherData }) {
                                 <path d="M5.32178 5.32227L4.92894 4.92943" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
                             </g>
                         </svg>
-                        Pôr do Sol: {sunset}
+                        Pôr: {sunset}
                     </p>
                 </div>
             </div>

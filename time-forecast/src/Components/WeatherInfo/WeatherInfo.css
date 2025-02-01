@@ -3,6 +3,7 @@
     border-radius: 0 20px;
     margin-top: 20px;
     padding: 8px;
+    
 }
 
 .header {
@@ -81,9 +82,39 @@
 .icon {
     vertical-align: middle;
     margin-right: 3px;
+}
+
+.timeInfoContainer {
+    display: flex;
+    justify-content: space-evenly;
+    
+    
+    .localTime, .sunInfo {
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sunInfo {
+        background: linear-gradient(135deg, #90dffe, #eb7933);
+    }
+
     .localTime {
         background: linear-gradient(135deg, #e0e0e0, #a0aaba);
     }
+
+    h3 {
+        text-align: center;
+        width: 100%;
+        padding: 10px 10px 5px;
+        border-bottom: 0.5px solid black;
+    }
+
+    p {
+        padding: 8px 8px;
+    }
+}
+
 .clock-container {
     display: flex;
     flex-direction: column;
