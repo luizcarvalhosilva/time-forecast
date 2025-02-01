@@ -1,0 +1,4 @@
+.clock p {
+    font-family: var(--clock-font);
+    font-weight: bold;
+}
