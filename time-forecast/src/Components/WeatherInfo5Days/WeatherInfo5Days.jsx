@@ -65,7 +65,7 @@ function WeatherInfo5Days({ weather5D }) {
 
     return (
         <div className="generalContainer">
-            <h2>Previsão do Tempo</h2>
+            <h2>&#128197; Próximos 5 dias</h2>
 
             <div className="carouselContainer">
                 <Swiper
