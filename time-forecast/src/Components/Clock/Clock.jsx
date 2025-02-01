@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Clock.css";
 
 function Clock({ timezone }) {
   const [time, setTime] = useState(new Date());
@@ -22,9 +23,10 @@ function Clock({ timezone }) {
   };
 
   return (
-    <div className="clock">
-      <h3>Hora Local</h3>
-      <p>{formatTime(time)}</p>
+    <div>
+      <div className="clock">
+        <p>{formatTime(time)}</p>
+      </div>
     </div>
   );
 }
