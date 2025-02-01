@@ -33,7 +33,7 @@ function App() {
         <button onClick={citySearch}>Buscar</button>
       </div>
 
-      {weather && <WeatherInfo weatherData={weather} />}
+      <div className="container-content">{weather && <WeatherInfo weatherData={weather} />}</div>
       {weather5D && <WeatherInfo5Days weather5D={weather5D} />}
     </div>
   )

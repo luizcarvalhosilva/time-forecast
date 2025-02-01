@@ -22,6 +22,11 @@
     }
 }
 
+.container-content {
+    display: flex;
+    justify-content: center;
+}
+
 .cityInput {
     display: flex;
     justify-content: center;
