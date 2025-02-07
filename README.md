@@ -52,6 +52,6 @@
 
 ###
 
-<p align="left">Imagens: <a href="[https://github.com/luizcarvalhosilva/time-forecast.wiki.git](https://github.com/luizcarvalhosilva/time-forecast/wiki)">Acesse aqui / Access here</a></p>
+<p align="left">Imagens: <a href="https://github.com/luizcarvalhosilva/time-forecast/wiki">Acesse aqui / Access here</a></p>
 
 ###
